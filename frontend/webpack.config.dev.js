@@ -1,6 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const marked = require("marked");
+const renderer = new marked.Renderer();
 
 process.env.NODE_ENV = "development";
 
@@ -51,6 +53,29 @@ module.exports = {
       {
         test: /(\.css)$/,
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.md$/,
+        use: [
+            {
+                loader: "html-loader"
+            },
+            {
+                loader: "markdown-loader",
+                options: {
+                    pedantic: true,
+                    renderer
+                }
+            }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       }
     ]
   },

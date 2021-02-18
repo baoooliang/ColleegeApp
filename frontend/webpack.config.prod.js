@@ -2,6 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const marked = require("marked");
+const renderer = new marked.Renderer();
 
 process.env.NODE_ENV = "production";
 
@@ -83,6 +85,21 @@ module.exports = {
               sourceMap: true
             }
           }
+        ]
+      },
+      {
+        test: /\.md$/,
+        use: [
+            {
+                loader: "html-loader"
+            },
+            {
+                loader: "markdown-loader",
+                options: {
+                    pedantic: true,
+                    renderer
+                }
+            }
         ]
       }
     ]

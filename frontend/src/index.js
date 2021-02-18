@@ -5,7 +5,6 @@ import {Provider as ReduxProvider} from "react-redux";
 
 import App from "./components/App";
 import configureStore from "./redux/configureStore";
-
 const store = configureStore();
 
 render(

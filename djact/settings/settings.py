@@ -19,6 +19,7 @@ BASE_DIR = pathlib.Path(__file__).parent.parent
 PROJECT_ROOT = BASE_DIR.parent
 
 env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -36,9 +37,11 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=list())
 INSTALLED_APPS = [
     'djact.apps.authentication',
     'djact.apps.core',
+    'djact.apps.schools',
 
     'rest_framework',
 
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,8 +84,13 @@ WSGI_APPLICATION = 'djact.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR.joinpath('db.sqlite3')),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'college_go',
+        'USER': 'root',
+        'PASSWORD': 'Lb19950816',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
@@ -136,9 +144,9 @@ LOGOUT_REDIRECT_URL = '/login'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'zh'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
