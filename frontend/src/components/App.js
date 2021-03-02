@@ -86,6 +86,10 @@ export default function App({ ...rest }) {
     || window.location.pathname.includes('/match') || window.location.pathname.includes('/home');
   };
 
+  const isAdminPage = () => {
+    return window.location.pathname.includes('admin')
+  };
+
   const isHomePage = () => {
     return window.location.pathname.includes('/home');
   };
@@ -116,7 +120,7 @@ export default function App({ ...rest }) {
   return (
     <div className={classes.wrapper}>
       {
-      !isNonAdminPage()  || mobileOpen?
+      isAdminPage()  || mobileOpen?
         <Sidebar
             routes={routes}
             logoText={"My Colleege"}
@@ -128,7 +132,7 @@ export default function App({ ...rest }) {
             {...rest}
         /> : null
       }
-      <div className={!isNonAdminPage() ? classes.mainPanel : null} ref={mainPanel}>
+      <div className={isAdminPage() ? classes.mainPanel : null} ref={mainPanel}>
         <Navbar
           routes={routes}
           handleDrawerToggle={handleDrawerToggle}
