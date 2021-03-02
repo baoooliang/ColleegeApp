@@ -20,7 +20,7 @@ module.exports = {
     bundle: ["babel-polyfill", "./src/index"]
   },
   output: {
-    path: path.resolve(__dirname, "../static"),
+    path: path.resolve(__dirname, "./static"),
     publicPath: "/",
     filename: "[name].[contenthash].js"
   },

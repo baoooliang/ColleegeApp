@@ -4,10 +4,9 @@
   "description": "Django + React",
   "scripts": {
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
-    "clean:build": "rimraf ../static && mkdir ../static",
+    "clean:build": "rimraf ./static && mkdir ./static",
     "prebuild": "run-p clean:build",
-    "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "rimraf ../static/index.html"
+    "build": "webpack --config webpack.config.prod.js"
   },
   "main": "index.js",
   "author": "Constantine",
