@@ -16,11 +16,11 @@ import Notifications from "@material-ui/icons/Notifications";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Search from "@material-ui/icons/Search";
 // core components
-import CustomInput from "../../dashboard/components/CustomInput/CustomInput.js";
-import Button from "../../dashboard/components/CustomButtons/Button.js";
+import CustomInput from "../components/CustomInput/CustomInput.js";
+import Button from "../components/CustomButtons/Button.js";
 import Link from '@material-ui/core/Link';
 
-import styles from "../../dashboard/assets/jss/material-dashboard-react/components/headerLinksStyle.js";
+import styles from "../assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
@@ -72,7 +72,7 @@ export default function AdminNavbarLinks() {
         simple={!(window.innerWidth > 959)}
         aria-label="Dashboard"
         className={classes.buttonLinkWithText}
-        href='/schools'
+        href='/home'
       >
         首页
       </Button>
@@ -82,7 +82,17 @@ export default function AdminNavbarLinks() {
         simple={!(window.innerWidth > 959)}
         aria-label="Dashboard"
         className={classes.buttonLinkWithText}
-        href='/'
+        href='/schools'
+      >
+        Explore
+      </Button>
+      <Button
+        color={window.innerWidth > 959 ? "transparent" : "white"}
+        justIcon={window.innerWidth > 959}
+        simple={!(window.innerWidth > 959)}
+        aria-label="Dashboard"
+        className={classes.buttonLinkWithText}
+        href='/admin/dashboard'
       >
         MyColleege
       </Button>

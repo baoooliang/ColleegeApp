@@ -7,20 +7,21 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Navbar from "./common/Navbars/Navbar.js";
-import Footer from "./dashboard/components/Footer/Footer.js";
-import Sidebar from "./dashboard/components/Sidebar/Sidebar.js";
-import FixedPlugin from "./dashboard/components/FixedPlugin/FixedPlugin.js";
+import Footer from "./common/components/Footer/Footer.js";
+import Sidebar from "./common/components/Sidebar/Sidebar.js";
+import FixedPlugin from "./common/components/FixedPlugin/FixedPlugin.js";
 import MainPage from "./schools/School";
 import Match from "./match/Match";
+import Home from "./home/Home";
 import routes from "./dashboard/routes.js";
 
 import classNames from "classnames";
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import styles from "./dashboard/assets/jss/material-dashboard-react/layouts/adminStyle.js";
-import "./dashboard/assets/css/material-dashboard-react.css?v=1.9.0";
-import bgImage from "./dashboard/assets/img/sidebar-2.jpg";
-import logo from "./dashboard/assets/img/reactlogo.png";
+import styles from "./common/assets/jss/material-dashboard-react/layouts/adminStyle.js";
+import "./common/assets/css/material-dashboard-react.css?v=1.9.0";
+import bgImage from "./common/assets/img/sidebar-2.jpg";
+import logo from "./common/assets/img/reactlogo.png";
 
 let ps;
 
@@ -41,7 +42,7 @@ const switchRoutes = (
     <Route path="/match" component={Match}/>
     <Route path="/schools" component={MainPage}/>
     <Redirect from="/admin" to="/admin/dashboard" />
-    <Redirect from="/" to="/admin" />
+    <Route from="/" component={Home} />
   </Switch>
 );
 
@@ -81,8 +82,14 @@ export default function App({ ...rest }) {
     setMobileOpen(!mobileOpen);
   };
   const isNonAdminPage = () => {
-    return window.location.pathname.includes('/schools') || window.location.pathname.includes('/match');
+    return window.location.pathname.includes('/schools') && !window.location.pathname.includes('/schoolslist')
+    || window.location.pathname.includes('/match') || window.location.pathname.includes('/home');
   };
+
+  const isHomePage = () => {
+    return window.location.pathname.includes('/home');
+  };
+
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false);
@@ -127,8 +134,11 @@ export default function App({ ...rest }) {
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />
+
         <div className={classNames(classes.content, classesOverride.main)}>
-          <div className={classes.container}>{switchRoutes}</div>
+            {
+              switchRoutes
+            }
         </div>
         <Footer />
 

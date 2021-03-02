@@ -69,25 +69,6 @@ module.exports = {
         ]
       },
       {
-        test: /(\.css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => [require("cssnano")],
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
         test: /\.md$/,
         use: [
             {
@@ -101,6 +82,18 @@ module.exports = {
                 }
             }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },

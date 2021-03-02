@@ -25,18 +25,46 @@ import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
-import DashboardPage from "./views/Dashboard/Dashboard.js";
-import UserProfile from "./views/UserProfile/UserProfile.js";
-import TableList from "./views/TableList/TableList.js";
-import Exams from "./views/Exams/Exams.js";
-import ExamContents from "./views/Exams/Contents/Content.js";
+import DashboardPage from "./Dashboard/Dashboard.js";
+import UserProfile from "./UserProfile/UserProfile.js";
+import SchoolsList from "./SchoolsList/SchoolsList.js";
+import Calendar from "./Calendar/Calendar.js";
+import Exams from "./Exams/Exams.js";
+import FlashCards from "./FlashCards/FlashCards.js";
+import ExamContents from "./Exams/Contents/Content.js";
+import FlashCardsContents from "./FlashCards/Contents/Content.js";
+
+
 
 const dashboardRoutes = [
+  {
+    path: "/exams/content",
+    name: "我的SAT",
+    icon: Person,
+    component: ExamContents,
+    layout: "/admin",
+    parent: "exams"
+  },
+  {
+    path: "/flashcards/content",
+    name: "",
+    icon: Person,
+    component: FlashCardsContents,
+    layout: "/admin",
+    parent: "flashcards"
+  },
   {
     path: "/dashboard",
     name: "Dashboard",
     icon: Dashboard,
     component: DashboardPage,
+    layout: "/admin"
+  },
+  {
+    path: "/calendar",
+    name: "我的日程表",
+    icon: Dashboard,
+    component: Calendar,
     layout: "/admin"
   },
   {
@@ -47,17 +75,17 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/table",
+    path: "/flashcards",
     name: "单词闪卡",
     icon: Person,
-    component: UserProfile,
+    component: FlashCards,
     layout: "/admin"
   },
   {
-    path: "/table",
+    path: "/schoolslist",
     name: "学校清单",
     icon: "content_paste",
-    component: TableList,
+    component: SchoolsList,
     layout: "/admin"
   },
   {
@@ -66,14 +94,6 @@ const dashboardRoutes = [
     icon: Person,
     component: UserProfile,
     layout: "/admin"
-  },
-  {
-    path: "exams/content",
-    name: "我的SAT",
-    icon: Person,
-    component: ExamContents,
-    layout: "/admin",
-    parent: "exams"
   }
 ];
 

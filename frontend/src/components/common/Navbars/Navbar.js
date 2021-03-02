@@ -12,14 +12,23 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import AdminNavbarLinks from "./AdminNavbarLinks.js";
 
-import Button from "../../dashboard/components/CustomButtons/Button.js";
+import Button from "../components/CustomButtons/Button.js";
 
-import styles from "../../dashboard/assets/jss/material-dashboard-react/components/headerStyle.js";
+import styles from "../assets/jss/material-dashboard-react/components/headerStyle.js";
+
+const useBrandStyles = makeStyles({
+  brand: {
+    fontFamily: 'Permanent Marker'
+  }
+})
 
 const useStyles = makeStyles(styles);
 
+
 export default function Header(props) {
   const classes = useStyles();
+  const brandClass = useBrandStyles();
+
   function makeBrand() {
     var name;
     props.routes.map(prop => {
@@ -39,10 +48,6 @@ export default function Header(props) {
     <AppBar className={classNames(appBarClasses, classes.appBar)}>
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
-          {/* Here we create navbar brand, based on route name */}
-          <Button color="transparent" href="#" className={classes.title}>
-            {makeBrand()}
-          </Button>
         </div>
         <Hidden smDown implementation="css">
           <AdminNavbarLinks />

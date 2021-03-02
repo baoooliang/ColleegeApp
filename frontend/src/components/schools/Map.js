@@ -37,7 +37,7 @@ const MapChart = (props) => {
                 key={geo.rsmKey}
                 stroke="#FFF"
                 geography={geo}
-                fill="#4C858E"
+                fill="#00acc1"
               /> :
               <Geography
                 key={geo.rsmKey}
