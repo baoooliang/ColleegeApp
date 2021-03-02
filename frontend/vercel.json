@@ -2,6 +2,8 @@
   "routes": [
     { "src": "/", "dest": "/" },
     { "src": "/match", "dest": "/" },
-    { "src": "/schools", "dest": "/" }
+    { "src": "/schools", "dest": "/" },
+    { "src": "/home", "dest": "/" },
+    { "src": "/admin/.*", "dest": "/" }
   ]
 }
