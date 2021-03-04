@@ -24,7 +24,6 @@ const useBrandStyles = makeStyles({
 
 const useStyles = makeStyles(styles);
 
-
 export default function Header(props) {
   const classes = useStyles();
   const brandClass = useBrandStyles();

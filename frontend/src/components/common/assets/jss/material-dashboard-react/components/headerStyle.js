@@ -31,7 +31,8 @@ const headerStyle = () => ({
   },
   container: {
     ...container,
-    minHeight: "50px"
+    minHeight: "50px",
+    marginRight: "none"
   },
   flex: {
     flex: 1

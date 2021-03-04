@@ -51,6 +51,9 @@ const useStylesOverride = makeStyles(() => ({
   main: {
     marginTop: '0px',
     paddingTop: '70px'
+  },
+  wrapper: {
+    overflow: 'auto'
   }
 }));
 
@@ -118,7 +121,7 @@ export default function App({ ...rest }) {
     };
   }, [mainPanel]);
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper + " " + classesOverride.wrapper}>
       {
       isAdminPage()  || mobileOpen?
         <Sidebar
